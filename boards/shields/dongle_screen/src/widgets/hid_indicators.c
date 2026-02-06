@@ -13,6 +13,7 @@
 #include "hid_indicators.h"
 #include <zmk/events/caps_word_state_changed.h>
 #include <lvgl.h>
+#include "../theme.h"
 
 // Offsets for each of the lock states.
 #define LED_NLCK 0x01
@@ -37,10 +38,10 @@ static void set_hid_indicators(struct zmk_widget_hid_indicators *widget, struct 
     bool caps_word = state.caps_word_active;
 
     // Set the color based on active or inavtive.
-    lv_color_t caps_color = caps ? lv_palette_main(LV_PALETTE_GREEN) : lv_palette_darken(LV_PALETTE_GREY,3);
-    lv_color_t num_color = num ? lv_palette_main(LV_PALETTE_INDIGO) : lv_palette_darken(LV_PALETTE_GREY,3);
-    lv_color_t scroll_color = scroll ? lv_palette_main(LV_PALETTE_PURPLE) : lv_palette_darken(LV_PALETTE_GREY,3);
-    lv_color_t caps_word_color = caps_word ? lv_palette_main(LV_PALETTE_YELLOW) : lv_palette_darken(LV_PALETTE_GREY,3);  // NEW!
+    lv_color_t caps_color = caps ? THEME_COLOR_CAPS_ACTIVE : THEME_COLOR_LOCK_INACTIVE;
+    lv_color_t num_color = num ? THEME_COLOR_NUM_ACTIVE : THEME_COLOR_LOCK_INACTIVE;
+    lv_color_t scroll_color = scroll ? THEME_COLOR_SCROLL_ACTIVE : THEME_COLOR_LOCK_INACTIVE;
+    lv_color_t caps_word_color = caps_word ? THEME_COLOR_CAPS_WORD_ACTIVE : THEME_COLOR_LOCK_INACTIVE;
 
     // Set the icon based on locked or unlocked.
     const char* cap_icon_choice = caps ? LOCK : UNLOCK;

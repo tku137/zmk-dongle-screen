@@ -20,6 +20,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "battery_status.h"
 #include "../brightness.h"
+#include "../theme.h"
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_DONGLE_BATTERY)
     #define SOURCE_OFFSET 1
@@ -154,20 +155,20 @@ static void set_battery_symbol(lv_obj_t *widget, struct battery_state state) {
 
     // Style the bar indicator and border to the various states.
     if (state.level <= 10) {
-        lv_obj_set_style_border_color(bar, lv_palette_main(LV_PALETTE_RED), 0);
-        lv_obj_set_style_bg_color(bar, lv_palette_main(LV_PALETTE_RED), LV_PART_INDICATOR); 
+        lv_obj_set_style_border_color(bar, THEME_COLOR_BATTERY_CRITICAL, 0);
+        lv_obj_set_style_bg_color(bar, THEME_COLOR_BATTERY_CRITICAL, LV_PART_INDICATOR); 
     } else if (state.level <= 20) {
-        lv_obj_set_style_border_color(bar, lv_palette_main(LV_PALETTE_ORANGE), 0);
-        lv_obj_set_style_bg_color(bar, lv_palette_main(LV_PALETTE_ORANGE), LV_PART_INDICATOR); 
+        lv_obj_set_style_border_color(bar, THEME_COLOR_BATTERY_LOW, 0);
+        lv_obj_set_style_bg_color(bar, THEME_COLOR_BATTERY_LOW, LV_PART_INDICATOR); 
     } else if (state.level <= 30) {
-        lv_obj_set_style_border_color(bar, lv_palette_main(LV_PALETTE_YELLOW), 0);
-        lv_obj_set_style_bg_color(bar, lv_palette_main(LV_PALETTE_YELLOW), LV_PART_INDICATOR); 
+        lv_obj_set_style_border_color(bar, THEME_COLOR_BATTERY_MEDIUM, 0);
+        lv_obj_set_style_bg_color(bar, THEME_COLOR_BATTERY_MEDIUM, LV_PART_INDICATOR); 
     } else if (state.level <= 90) {
-        lv_obj_set_style_border_color(bar, lv_palette_main(LV_PALETTE_GREEN), 0);
-        lv_obj_set_style_bg_color(bar, lv_palette_main(LV_PALETTE_GREEN), LV_PART_INDICATOR); 
+        lv_obj_set_style_border_color(bar, THEME_COLOR_BATTERY_GOOD, 0);
+        lv_obj_set_style_bg_color(bar, THEME_COLOR_BATTERY_GOOD, LV_PART_INDICATOR); 
     } else {
-        lv_obj_set_style_border_color(bar, lv_palette_main(LV_PALETTE_INDIGO), 0);
-        lv_obj_set_style_bg_color(bar, lv_palette_main(LV_PALETTE_INDIGO), LV_PART_INDICATOR); 
+        lv_obj_set_style_border_color(bar, THEME_COLOR_BATTERY_FULL, 0);
+        lv_obj_set_style_bg_color(bar, THEME_COLOR_BATTERY_FULL, LV_PART_INDICATOR); 
     }
 
     lv_obj_clear_flag(bar, LV_OBJ_FLAG_HIDDEN);

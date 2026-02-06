@@ -15,6 +15,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "wpm_status.h"
 #include <fonts.h>
+#include "../theme.h"
 
 #define WPM_BAR_LENGTH 130
 #define WPM_BAR_HEIGHT 20
@@ -78,14 +79,14 @@ int zmk_widget_wpm_status_init(struct zmk_widget_wpm_status *widget, lv_obj_t *p
 
     // Set the bar style.
     lv_style_init(&style_bg);
-    lv_style_set_border_color(&style_bg, lv_palette_darken(LV_PALETTE_GREY,3));
+    lv_style_set_border_color(&style_bg, THEME_COLOR_WPM_BORDER);
     lv_style_set_border_width(&style_bg, 1);
     lv_style_set_radius(&style_bg, 10);
 
     lv_style_init(&style_indic);
     lv_style_set_bg_opa(&style_indic, LV_OPA_COVER);
-    lv_style_set_bg_color(&style_indic, lv_palette_main(LV_PALETTE_YELLOW));
-    lv_style_set_bg_grad_color(&style_indic, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_bg_color(&style_indic, THEME_COLOR_WPM_START);
+    lv_style_set_bg_grad_color(&style_indic, THEME_COLOR_WPM_END);
     lv_style_set_bg_grad_dir(&style_indic, LV_GRAD_DIR_HOR);
     lv_style_set_radius(&style_indic, 8);
 

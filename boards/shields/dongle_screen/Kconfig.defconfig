@@ -245,4 +245,30 @@ config DONGLE_SCREEN_SYSTEM_ICON
     help
         The icon to display when the 'LGUI'/'RGUI' is pressed. Can be used to better match the Mod Widget to the underlying system.
         (0: macOS, 1: Linux, 2: Windows)
+
+choice DONGLE_SCREEN_THEME
+    prompt "Color theme for the dongle screen"
+    default DONGLE_SCREEN_THEME_DEFAULT
+    help
+      Select a color theme for all widgets on the dongle screen.
+      This affects battery colors, lock indicators, output status, and more.
+
+config DONGLE_SCREEN_THEME_DEFAULT
+    bool "Default (Original YADS colors)"
+    help
+      Uses the original YADS color palette with LVGL standard colors.
+      - Battery: Red/Orange/Yellow/Green/Indigo
+      - Locks: Green/Indigo/Purple/Yellow
+      - Output: Orange/Red/Blue/Green
+
+config DONGLE_SCREEN_THEME_TOKYONIGHT
+    bool "Tokyo Night (Night variant)"
+    help
+      A clean, elegant dark theme inspired by Tokyo's neon lights.
+      - Battery: Vibrant reds to cool cyans
+      - Locks: Soft neon colors (green/blue/purple/yellow)
+      - Output: Warm orange/red for USB, blues/greens for BLE
+      - Based on the popular Tokyo Night color scheme
+
+endchoice
 endif

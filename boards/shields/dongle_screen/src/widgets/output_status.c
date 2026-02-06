@@ -18,6 +18,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/ble.h>
 #include <zmk/endpoints.h>
 #include <lvgl.h>
+#include "../theme.h"
 
 #include "output_status.h"
 
@@ -45,10 +46,10 @@ static struct output_status_state get_state(const zmk_event_t *_eh)
 static void set_status_symbol(struct zmk_widget_output_status *widget, struct output_status_state state)
 {
     // Set the label text color based on the various endpoint states.
-    lv_color_t usb_color = state.usb_is_hid_ready ? lv_palette_main(LV_PALETTE_ORANGE) : lv_palette_main(LV_PALETTE_RED);
-    lv_color_t ble_color = state.active_profile_connected ? lv_palette_main(LV_PALETTE_BLUE) :
-                           state.active_profile_bonded ? lv_palette_main(LV_PALETTE_GREEN) : lv_palette_darken(LV_PALETTE_GREY,3);
-    lv_color_t inactive_color = lv_palette_darken(LV_PALETTE_GREY,3);
+    lv_color_t usb_color = state.usb_is_hid_ready ? THEME_COLOR_USB_CONNECTED : THEME_COLOR_USB_DISCONNECTED;
+    lv_color_t ble_color = state.active_profile_connected ? THEME_COLOR_BLE_CONNECTED :
+                           state.active_profile_bonded ? THEME_COLOR_BLE_BONDED : THEME_COLOR_BLE_INACTIVE;
+    lv_color_t inactive_color = THEME_COLOR_INACTIVE;
 
     // Create the BLE Label text based on the active profile index.
     char ble_text[12];
