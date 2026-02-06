@@ -252,7 +252,9 @@ int zmk_widget_dongle_battery_status_init(struct zmk_widget_dongle_battery_statu
         lv_bar_set_range(bar, BATT_BAR_MIN, BATT_BAR_MAX);
         lv_obj_add_flag(bar, LV_OBJ_FLAG_HIDDEN);
         lv_obj_align(bar, LV_ALIGN_BOTTOM_MID, -60 +(i * 120), -10);
-        // lv_obj_add_event_cb(bar, event_cb, LV_EVENT_DRAW_PART_END, NULL);  // hide percentage numbers
+        #if IS_ENABLED(CONFIG_DONGLE_SCREEN_BATTERY_SHOW_PERCENTAGE)
+        lv_obj_add_event_cb(bar, event_cb, LV_EVENT_DRAW_PART_END, NULL);
+        #endif
 
 
         // Finally, pakage the objects into the collector.

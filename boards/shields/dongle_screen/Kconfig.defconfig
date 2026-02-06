@@ -189,6 +189,14 @@ config DONGLE_SCREEN_BATTERY_ACTIVE
     help
       If the Battery Widget should be active or not
 
+config DONGLE_SCREEN_BATTERY_SHOW_PERCENTAGE
+    bool "Show battery percentage numbers"
+    default n
+    depends on DONGLE_SCREEN_BATTERY_ACTIVE
+    help
+      If enabled, displays battery percentage numbers on the battery bars.
+      If disabled, only colored bars are shown without numeric values.
+
 config DONGLE_SCREEN_AMBIENT_LIGHT
     bool "Enable automatic brightness via ambient light sensor"
     default n
