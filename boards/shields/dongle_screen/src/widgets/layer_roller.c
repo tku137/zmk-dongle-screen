@@ -27,6 +27,10 @@ struct layer_roller_state {
 static void layer_roller_set_sel(lv_obj_t *roller, struct layer_roller_state state) {
     if (state.index == 1) {
         lv_obj_set_style_text_color(roller, lv_palette_main(LV_PALETTE_ORANGE), LV_PART_SELECTED);
+    } else if (state.index == 2) {
+        lv_obj_set_style_text_color(roller, lv_palette_main(LV_PALETTE_BLUE), LV_PART_SELECTED);
+    } else if (state.index == 3) {
+        lv_obj_set_style_text_color(roller, lv_palette_main(LV_PALETTE_PURPLE), LV_PART_SELECTED);
     } else if (state.index == 4) {
         lv_obj_set_style_text_color(roller, lv_palette_main(LV_PALETTE_GREEN), LV_PART_SELECTED);
     } else {
