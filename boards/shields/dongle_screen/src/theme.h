@@ -67,11 +67,11 @@ struct yads_theme {
     #define THEME_BATTERY_GOOD        ((lv_color_t)LV_COLOR_MAKE(0x9E, 0xCE, 0x6A))
     #define THEME_BATTERY_FULL        ((lv_color_t)LV_COLOR_MAKE(0x7D, 0xCF, 0xFF))
     
-    #define THEME_CAPS_ACTIVE         ((lv_color_t)LV_COLOR_MAKE(0x9E, 0xCE, 0x6A))
-    #define THEME_NUM_ACTIVE          ((lv_color_t)LV_COLOR_MAKE(0x7A, 0xA2, 0xF7))
-    #define THEME_SCROLL_ACTIVE       ((lv_color_t)LV_COLOR_MAKE(0xBB, 0x9A, 0xF7))
-    #define THEME_CAPS_WORD_ACTIVE    ((lv_color_t)LV_COLOR_MAKE(0xE0, 0xAF, 0x68))
-    #define THEME_LOCK_INACTIVE       ((lv_color_t)LV_COLOR_MAKE(0x41, 0x4B, 0x68))
+    #define THEME_CAPS_ACTIVE         ((lv_color_t)LV_COLOR_MAKE(0x9E, 0xCE, 0x6A))  // Green
+    #define THEME_NUM_ACTIVE          ((lv_color_t)LV_COLOR_MAKE(0x7A, 0xA2, 0xF7))  // Blue
+    #define THEME_SCROLL_ACTIVE       ((lv_color_t)LV_COLOR_MAKE(0xE0, 0xAF, 0x68))  // Yellow
+    #define THEME_CAPS_WORD_ACTIVE    ((lv_color_t)LV_COLOR_MAKE(0xBB, 0x9A, 0xF7))  // Purple
+    #define THEME_LOCK_INACTIVE       ((lv_color_t)LV_COLOR_MAKE(0x41, 0x4B, 0x68))  // Dark Blue-Grey
     
     #define THEME_USB_CONNECTED       ((lv_color_t)LV_COLOR_MAKE(0xFF, 0x9E, 0x64))
     #define THEME_USB_DISCONNECTED    ((lv_color_t)LV_COLOR_MAKE(0xF7, 0x76, 0x8E))
