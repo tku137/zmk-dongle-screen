@@ -125,8 +125,8 @@ int zmk_widget_layer_roller_init(struct zmk_widget_layer_roller *widget, lv_obj_
 
     static lv_style_t style;
     lv_style_init(&style);
-    lv_style_set_bg_color(&style, lv_color_black());
-    lv_style_set_text_color(&style, lv_color_white());
+    lv_style_set_bg_color(&style, THEME_COLOR_BACKGROUND);
+    lv_style_set_text_color(&style, THEME_COLOR_LAYER_INACTIVE);
     lv_style_set_text_line_space(&style, 0);
     //lv_style_set_border_width(&style, 1);
     //lv_style_set_border_color(&style, lv_palette_main(LV_PALETTE_LIGHT_BLUE));

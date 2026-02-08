@@ -100,7 +100,7 @@ int zmk_widget_wpm_status_init(struct zmk_widget_wpm_status *widget, lv_obj_t *p
     // Set the label.
     lv_label_set_text(wpm_label, "Words per Minute");
     lv_obj_set_style_text_font(wpm_label, &lv_font_montserrat_12, 0);
-    lv_obj_set_style_text_color(wpm_label, lv_palette_darken(LV_PALETTE_GREY,3), 0);
+    lv_obj_set_style_text_color(wpm_label, THEME_COLOR_TEXT_SECONDARY, 0);
     
     // Align all the objects within the newly created widget.
     lv_obj_align(bar, LV_ALIGN_TOP_LEFT, 0, 0);
