@@ -25,16 +25,26 @@ struct layer_roller_state {
 };
 
 static void layer_roller_set_sel(lv_obj_t *roller, struct layer_roller_state state) {
-    if (state.index == 1) {
-        lv_obj_set_style_text_color(roller, lv_palette_main(LV_PALETTE_ORANGE), LV_PART_SELECTED);
-    } else if (state.index == 2) {
-        lv_obj_set_style_text_color(roller, lv_palette_main(LV_PALETTE_BLUE), LV_PART_SELECTED);
-    } else if (state.index == 3) {
-        lv_obj_set_style_text_color(roller, lv_palette_main(LV_PALETTE_PURPLE), LV_PART_SELECTED);
-    } else if (state.index == 4) {
-        lv_obj_set_style_text_color(roller, lv_palette_main(LV_PALETTE_GREEN), LV_PART_SELECTED);
-    } else {
-        lv_obj_set_style_text_color(roller, lv_color_white(), LV_PART_SELECTED);
+    // Use theme-aware layer colors
+    switch (state.index) {
+        case 0:
+            lv_obj_set_style_text_color(roller, THEME_COLOR_LAYER_0, LV_PART_SELECTED);
+            break;
+        case 1:
+            lv_obj_set_style_text_color(roller, THEME_COLOR_LAYER_1, LV_PART_SELECTED);
+            break;
+        case 2:
+            lv_obj_set_style_text_color(roller, THEME_COLOR_LAYER_2, LV_PART_SELECTED);
+            break;
+        case 3:
+            lv_obj_set_style_text_color(roller, THEME_COLOR_LAYER_3, LV_PART_SELECTED);
+            break;
+        case 4:
+            lv_obj_set_style_text_color(roller, THEME_COLOR_LAYER_4, LV_PART_SELECTED);
+            break;
+        default:
+            lv_obj_set_style_text_color(roller, THEME_COLOR_LAYER_TEXT, LV_PART_SELECTED);
+            break;
     }
     lv_roller_set_selected(roller, layer_select_id[state.index], LV_ANIM_ON);
 }
