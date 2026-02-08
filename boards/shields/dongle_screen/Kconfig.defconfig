@@ -153,6 +153,14 @@ config DONGLE_SCREEN_BRIGHTNESS_STEP
     help
       How much brightness steps (range MIN_BRIGHTNESS to MAX_BRIGHTNESS) should be applied per keystroke
 
+config DONGLE_SCREEN_BRIGHTNESS_SHOW_OVERLAY
+    bool "Show brightness overlay when adjusting"
+    default y
+    depends on DONGLE_SCREEN_BRIGHTNESS_KEYBOARD_CONTROL
+    help
+      If enabled, shows a temporary overlay with the brightness percentage when adjusting.
+      If disabled, brightness changes silently without visual feedback.
+
 config DONGLE_SCREEN_WPM_ACTIVE
     bool "WPM Widget active"
     default y

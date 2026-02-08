@@ -15,6 +15,7 @@ static void brightness_status_timer_cb(lv_timer_t *timer)
 
 int zmk_widget_update_brightness_status(struct zmk_widget_brightness_status *widget, uint8_t brightness)
 {
+#if IS_ENABLED(CONFIG_DONGLE_SCREEN_BRIGHTNESS_SHOW_OVERLAY)
     char brightness_text[8] = {};
     snprintf(brightness_text, sizeof(brightness_text), "%i%%", brightness);
     lv_label_set_text(widget->label, brightness_text);
@@ -25,6 +26,7 @@ int zmk_widget_update_brightness_status(struct zmk_widget_brightness_status *wid
     // Start a one-shot timer to hide the widget after 300ms
     lv_timer_t *timer = lv_timer_create(brightness_status_timer_cb, BRIGHTNESS_STATUS_HIDE_DELAY_MS, widget);
     lv_timer_set_repeat_count(timer, 1);
+#endif
 
     return 0;
 }
