@@ -15,7 +15,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 static char layer_names_buffer[256] = {0}; // Buffer for concatenated layer names
 
 // Custom display order: NUM, SYM, BASE, NAV, FUNC
-static int layer_display_order[5] = {3, 2, 0, 1, 4};
+// Layer 3=Num, Layer 2=Sym, Layer 0=Base, Layer 1=Nav, Layer 4=Func
+static int layer_display_order[5] = {2, 3, 0, 1, 4};
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
