@@ -14,6 +14,9 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 static char layer_names_buffer[256] = {0}; // Buffer for concatenated layer names
 
+// Custom display order: NUM, SYM, BASE, NAV, FUNC
+static int layer_display_order[5] = {3, 2, 0, 1, 4};
+
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
 struct layer_roller_state {
@@ -21,7 +24,15 @@ struct layer_roller_state {
 };
 
 static void layer_roller_set_sel(lv_obj_t *roller, struct layer_roller_state state) {
-    lv_roller_set_selected(roller, state.index, LV_ANIM_ON);
+    // Find which roller position corresponds to the active layer
+    uint8_t roller_index = 0;
+    for (int i = 0; i < ZMK_KEYMAP_LAYERS_LEN; i++) {
+        if (layer_display_order[i] == state.index) {
+            roller_index = i;
+            break;
+        }
+    }
+    lv_roller_set_selected(roller, roller_index, LV_ANIM_ON);
 }
 
 static void layer_roller_update_cb(struct layer_roller_state state) {
@@ -101,7 +112,7 @@ int zmk_widget_layer_roller_init(struct zmk_widget_layer_roller *widget, lv_obj_
     char *ptr = layer_names_buffer;
 
     for (int i = 0; i < ZMK_KEYMAP_LAYERS_LEN; i++) {
-        const char *layer_name = zmk_keymap_layer_name(zmk_keymap_layer_index_to_id(i));
+        const char *layer_name = zmk_keymap_layer_name(zmk_keymap_layer_index_to_id(layer_display_order[i]));
         if (layer_name) {
             if (i > 0) {
                 strcat(ptr, "\n");
@@ -123,7 +134,7 @@ int zmk_widget_layer_roller_init(struct zmk_widget_layer_roller *widget, lv_obj_
             } else {
                 // Just use the number for unnamed layers
                 char index_str[12];
-                snprintf(index_str, sizeof(index_str), "%d", i);
+                snprintf(index_str, sizeof(index_str), "%d", layer_display_order[i]);
                 strcat(ptr, index_str);
                 ptr += strlen(index_str);
             }
